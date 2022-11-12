@@ -1,0 +1,447 @@
+*
+{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    animation: loading 0.2s forwards;
+}
+
+@keyframes loading 
+{
+    0%
+    {
+        opacity: 0;
+    }
+
+    100%
+    {
+        opacity: 1;
+    }
+}
+
+body
+{
+    background-color: #ebffff57!important;
+}
+
+:root
+{
+    --add-product-text: 80px;
+
+    --weight-background-color: rgb(241, 241, 255);
+    --dimension-background-color: #eaffea;
+    --size-background-color: #ffeaea;
+
+    --box-width: 200px;
+    --box-height: 200px;
+    --box-radius: 10px;
+    --box-margin: 25px;
+    --box-text-size: 17px;
+    --box-padding-left: 40px;
+
+    --button-font-size: 18px
+    --add-button-color: lime;
+    --add-button-border: 2px solid black;
+    --delete-button-color: red;
+    --delete-button-border: 2px solid black;
+
+    --top-bar-height: 95px;
+    --top-bar-top-padding: 35px;
+    --top-bar-bottom-margin: 70px;
+    --top-bar-padding: 25px;
+    --top-bar-color: linear-gradient(90deg, rgba(205,41,123,1) 0%, rgba(196,127,96,1) 25%, rgba(205,108,41,1) 50%, rgba(196,127,96,1) 75%, rgba(205,41,123,1) 100%);
+    --top-bar-link-color: white;
+    --top-bar-distance: 10px;
+    --top-bar-radius: 8px;
+
+    --link-text-size: 20px;
+    --link-border:4px solid white;
+    --link-border-radius: 4px;
+
+    --button-length: 18px;
+    --button-font-size: 18px;
+}
+
+
+#top-bar
+{
+    display: flex;
+    flex-direction: row-reverse;
+    margin: 0;
+    padding-left: var(--top-bar-padding);
+    padding-right: var(--top-bar-padding);
+    width: 100%;
+    height: var(--top-bar-height);
+    padding-top: var(--top-bar-top-padding);
+    margin-bottom: var(--top-bar-bottom-margin);
+    background: var(--top-bar-color);
+    padding-bottom: 20px;
+    border-bottom-left-radius: var(--top-bar-radius);
+    border-bottom-right-radius: var(--top-bar-radius);
+    box-shadow: 1px 10px rgba(136, 136, 136, 0.192);
+    background-size: 1000% 1000%;
+    animation: newanimation 5s infinite;
+
+    >a
+    {
+        text-align: center;
+        margin-left: var(--top-bar-distance);
+        color: var(--top-bar-link-color);
+        font-size: var(--link-text-size);
+        border:var(--link-border);
+        border-radius:10px;
+        text-decoration: none;
+        padding-left: 9px;
+        padding-right: 9px;
+    }
+
+
+}
+
+@keyframes newanimation
+{
+    0%
+    {
+        background-position:0% 0%
+    }
+
+    100%
+    {
+        background-position:100% 0%
+    }
+}
+
+@keyframes newanimation2
+{
+    0%
+    {
+        background-position:0% 0%
+    }
+
+    50%
+    {
+        background-position:100% 0%
+    }
+
+    100%
+    {
+        background-position:0% 0%
+    }
+}
+
+
+.product-list-title
+{
+    color: rgb(204, 204, 204);
+    font-style: italic;
+}
+
+.title-area{
+    margin: 50px;
+  }
+
+.button-area
+{
+    display:flex;
+    flex-direction: row;
+    justify-content: space-between;
+    
+   
+}
+
+#delete-product-btn
+{
+    max-width: 130px!important;
+    min-width: 90px!important;
+    
+      align-items: center;
+      background: linear-gradient(31deg, rgba(205,41,123,1) 0%, rgba(196,127,96,1) 95%, rgba(205,108,41,1) 100%);
+      border: 0;
+      border-radius: 6px;
+      box-shadow: rgba(45, 35, 66, .4) 0 2px 4px,rgba(45, 35, 66, .3) 0 7px 13px -3px,rgba(58, 65, 111, .5) 0 -3px 0 inset;
+      box-sizing: border-box;
+      color: #fff;
+      cursor: pointer;
+      font-family: "JetBrains Mono",monospace;
+      height: 48px;
+      justify-content: center;
+      line-height: 1;
+      list-style: none;
+      overflow: hidden;
+      transition: box-shadow .15s,transform .15s;
+      will-change: box-shadow,transform;
+      font-size: var(--button-font-size);
+      margin-right: 40px;
+}
+  
+  #delete-product-btn:hover {
+    box-shadow: rgba(45, 35, 66, .4) 0 4px 8px, rgba(45, 35, 66, .3) 0 7px 13px -3px, #3c4fe0 0 -3px 0 inset;
+    transform: translateY(-1.2px);
+  }
+  
+  #delete-product-btn:active {
+    box-shadow: white 0 3px 7px inset;
+    transform: translateY(1.2px);
+  }
+
+.product-box
+{
+    width:var(--box-width);
+    height:var(--box-height);
+    border-radius: var(--box-radius);
+    margin: var(--box-margin);
+    padding-left: var(--box-padding-left)!important;
+    padding-top: 4px;
+
+    >.box-sku
+    {
+        font-size: 14px!important;
+        text-align: center;
+        margin-bottom: 15px;
+    }
+
+    >div
+    {
+        font-size: var(--box-text-size);
+    }
+
+    &.Weight
+    {
+        background-color: var(--weight-background-color);
+    }
+
+    &.Dimension
+    {
+        background-color: var(--dimension-background-color);
+    }
+
+    &.Size
+    {
+        background-color: var(--size-background-color);
+    }
+
+}
+
+
+
+
+.checkbox
+{
+    display: flex;
+    float: right;
+    
+}
+
+.form-check-input[type=checkbox]
+{
+    width:25px;
+    height:25px;
+    background-color: white;
+    border-width: 0px;
+    border-radius: 50%!important;
+}
+
+.form-check-input[type=checkbox]:checked
+{
+    background: rgb(204, 3, 104);
+}
+
+div.row>select
+{
+    margin-left: 30px;
+}
+
+.input-field
+{
+    justify-content: space-evenly;
+    margin-top: 30px!important;
+}
+
+
+.xstyle
+{
+    text-align: center;
+    width: 0%;
+}
+
+#cancel-btn
+{
+    width: 50px;
+    height: 50px;
+    background: linear-gradient(31deg, rgba(205,41,123,1) 0%, rgba(196,127,96,1) 95%, rgba(205,108,41,1) 100%);
+    border: 0;
+    border-radius: 50%;
+    color: #fff;
+    font-size: 30px;
+    font-weight: bolder;
+    cursor: pointer;
+    overflow: hidden;
+    float: right;
+    
+}
+
+#save-product-btn
+{
+    max-width: 130px!important;
+    min-width: 90px!important;
+    
+      align-items: center;
+      background: linear-gradient(31deg, rgba(205,41,123,1) 0%, rgba(196,127,96,1) 95%, rgba(205,108,41,1) 100%);
+      border: 0;
+      border-radius: 6px;
+      box-shadow: rgba(45, 35, 66, .4) 0 2px 4px,rgba(45, 35, 66, .3) 0 7px 13px -3px,rgba(58, 65, 111, .5) 0 -3px 0 inset;
+      box-sizing: border-box;
+      color: #fff;
+      cursor: pointer;
+      font-family: "JetBrains Mono",monospace;
+      height: 48px;
+      justify-content: center;
+      line-height: 1;
+      list-style: none;
+      overflow: hidden;
+      transition: box-shadow .15s,transform .15s;
+      will-change: box-shadow,transform;
+      font-size: var(--button-font-size);
+      margin: 50px;
+}
+  
+  #save-product-btn:hover {
+    box-shadow: rgba(45, 35, 66, .4) 0 4px 8px, rgba(45, 35, 66, .3) 0 7px 13px -3px, #3c4fe0 0 -3px 0 inset;
+    transform: translateY(-1.2px);
+  }
+  
+  #save-product-btn:active {
+    box-shadow: white 0 3px 7px inset;
+    transform: translateY(1.2px);
+  }
+
+  #product_form
+  {
+    width: 70%;
+    margin: auto;
+    background: linear-gradient(90deg, rgba(197,255,253,1) 0%, rgba(230,188,255,1) 50%, rgba(242,187,190,1) 100%);
+    background-size: 1000% 1000%;
+    animation: newanimation2 5s infinite;
+    border: rgba(128, 128, 128, 0.192) 5px solid;
+    border-radius: 15px;
+    margin-bottom: 30px;
+
+    >.row
+    {
+        justify-content: center;
+
+        >.dimensions
+        {
+            align-items: center;
+        }
+    }
+
+  }
+
+.hwl
+{
+    width: 100%;
+    min-width: 5%;
+}
+
+.hwltext
+{
+    text-align: center;
+}
+
+input[type=text]
+{
+    border: 0px;
+    border-radius: 4px;
+}
+
+#footer
+{
+    text-align: center;
+    >.container-fluid>.row
+    {
+        align-items: center;
+    }
+}
+
+#project-name
+{
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    font-size: 19px;
+}
+
+#cv-link
+{
+    text-decoration: none;
+    color: red;
+    font-size: 30px;
+}
+
+#git-hub-logo
+{
+    width: 200px;
+}
+
+.add-description
+{
+    margin-top: 30px!important;
+    font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif
+}
+
+#error-field
+{
+    color: red;
+    text-align: center;
+    margin-top: 50px;
+}
+
+@media (max-width:992px)
+{
+    #product_form
+    {
+        width: 100%;
+        margin: 0px;
+        border: 0px;
+
+        >.row
+        {
+            width: 100%;
+        }
+    }
+
+    #project-name
+    {
+        font-size: 12px;
+    }
+
+}
+
+@media (max-width:649px)
+{
+    #git-hub-logo
+    {
+        width: 100px;
+    }
+}
+
+@media (max-width:575px)
+{
+    .hwl
+    {
+        width: 100%!important;
+    }
+
+    .xstyle
+    {
+        width: 100%!important;
+        margin-top: 30px!important;
+        margin-bottom: 30px!important;
+        font-size: 40px;
+        font-weight: bolder;
+    }
+
+    #git-hub-logo
+    {
+        width: 80px;
+    }
+}
