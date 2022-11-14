@@ -1,19 +1,15 @@
 import React, {useState, useEffect} from 'react'
+import { useNavigate } from 'react-router-dom';
 
 const Data = () => {
-  
+  const navigate = useNavigate();
 
-  //FETCHING JSON DATA FROM PHP
-  const Fetch = async () => {
-  await fetch(process.env.REACT_APP_FETCH_URL)
-  .then(res => res.json())
-  .then((result) =>{setItem(result)})
-  .catch((err)=>{console.log("")})
-  }
-  
-
-  //TRANSFERING DATA TO PROPERTY NAMED DATA
-  useEffect(() => {Fetch()});
+  //FETCHING API DATA
+  useEffect(() => {
+    fetch(process.env.REACT_APP_FETCH_URL)
+    .then(res => res.json())
+    .then((result) =>{setItem(result)})
+    .catch((err)=>{console.log("")});},[]);
   const [item, setItem] = useState([]);
 
 
@@ -51,7 +47,8 @@ const Data = () => {
     .then(res => res.json())
     .then((result) =>{
     })
-    .catch((err)=>{console.log("")})
+    .catch((err)=>{console.log(err)});
+    window.location.reload(false);
 }
 
   return(
