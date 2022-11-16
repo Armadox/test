@@ -10,7 +10,7 @@ const POSTdata = () => {
     ///////FETCHING JSON DATA FROM PHP////////
     //////////////////////////////////////////
     useEffect(() => {
-        fetch(process.env.REACT_APP_FETCH_URL)
+        fetch("server.php")
         .then(res => res.json())
         .then((result) => { setItem(result) })
         .catch((err) => { console.log("") })
@@ -54,7 +54,7 @@ const POSTdata = () => {
                 setError(0);
                 break;
             case 1:
-                fetch('http://localhost/fetch/root/public/post.php', {
+                fetch("post.php", {
                     method: 'POST',
                     body: JSON.stringify(regForm)
                 })
@@ -79,32 +79,32 @@ const POSTdata = () => {
             <form onSubmit={handleSubmit} id="product_form">
                 <div className='row'>
                     <div className='row input-field'>
-                        <div className='col-12' style={{ marginBottom: '30px' }} onClick={handleCancel}><button id='cancel-btn'>X</button></div>
+                        <div className='col-12' style={{ marginBottom: '30px' }} onClick={handleCancel}><button id='cancel-btn'>Cancel</button></div>
                         <h3 className='col-3'>SKU</h3>
-                        <input className='col-7' type="text" placeholder="SKU876ABC123" pattern="[a-zA-Z0-9-]+" maxLength="30" required value={sku} onChange={(e) => setSku(e.target.value)}></input>
+                        <input id="sku" className='col-7' type="text" placeholder="SKU876ABC123" pattern="[a-zA-Z0-9-]+" maxLength="30" required value={sku} onChange={(e) => setSku(e.target.value)}></input>
                     </div>
                     <div className='row input-field'>
                         <h3 className='col-3'>Name</h3>
-                        <input type="text" className='col-7' placeholder="Green Table variant 07" maxLength="20" required value={name} onChange={(e) => setName(e.target.value)}></input>
+                        <input id="name" type="text" className='col-7' placeholder="Green Table variant 07" maxLength="20" required value={name} onChange={(e) => setName(e.target.value)}></input>
                     </div>
                     <div className='row input-field'>
                         <h3 className='col-3'>Price</h3>
-                        <input type="number" className='col-7' placeholder="124.70 ($)" maxLength="20" required value={price} onChange={(e) => setPrice(e.target.value)}></input>
+                        <input id="price" type="number" className='col-7' placeholder="124.70 ($)" maxLength="20" required value={price} onChange={(e) => setPrice(e.target.value)}></input>
                     </div>
                     <div className='row input-field'>
                         <h3 className='col-2'>Attribute</h3>
-                        <select value={attribute} className='col-5' onChange={(e) => setAttribute(e.target.value)} required="required">
+                        <select value={attribute} id="productType" className='col-5' onChange={(e) => setAttribute(e.target.value)} required="required">
                             <option value="">Select</option>
-                            <option id="DVD">Weight</option>
-                            <option id="Furniture">Dimension</option>
-                            <option id="Book">Size</option>
+                            <option id="DVD">DVD</option>
+                            <option id="Furniture">Furniture</option>
+                            <option id="Book">Book</option>
                         </select>
                     </div>
                     {
-                        attribute === 'Weight' && (
+                        attribute === 'Book' && (
                             <div className='row input-field'>
                                 <h3 className='col-3' maxLength="10">Weight</h3>
-                                <input type="number" required className='col-7' placeholder="4 (kg)" value={weight} onChange={(e) => setWeight(e.target.value)}></input>
+                                <input id="weight" type="number" required className='col-7' placeholder="4 (kg)" value={weight} onChange={(e) => setWeight(e.target.value)}></input>
                                 <div className='add-description'>Please, provide weight (kg)</div>
                                 <br></br>
                             </div>
@@ -112,22 +112,22 @@ const POSTdata = () => {
                     }
 
                     {
-                        attribute === 'Dimension' && (
+                        attribute === 'Furniture' && (
                             <div className='row input-field dimensions'>
                                 <hr style={{ width: '80%', textAlign: 'center' }}></hr>
                                 <div className='col-3 hwl'>
                                     <h3 className='hwltext' maxLength="10">Height</h3>
-                                    <input type="number" className='hwl' required value={height} placeholder="11 (cm)" onChange={(e) => setHeight(e.target.value)}></input>
+                                    <input id="height" type="number" className='hwl' required value={height} placeholder="11 (cm)" onChange={(e) => setHeight(e.target.value)}></input>
                                 </div>
                                 <div className='col-1 xstyle'>x</div>
                                 <div className='col-3 hwl'>
                                     <h3 className='hwltext' maxLength="10">Width</h3>
-                                    <input type="number" className='hwl' required value={width} placeholder="22 (cm)" onChange={(e) => setWidth(e.target.value)}></input>
+                                    <input id="width" type="number" className='hwl' required value={width} placeholder="22 (cm)" onChange={(e) => setWidth(e.target.value)}></input>
                                 </div>
                                 <div className='col-1 xstyle'>x</div>
                                 <div className='col-3 hwl'>
                                     <h3 className='hwltext' maxLength="10">Length</h3>
-                                    <input type="number" className='hwl' required value={length} placeholder="33 (cm)" onChange={(e) => setLength(e.target.value)}></input>
+                                    <input id="length" type="number" className='hwl' required value={length} placeholder="33 (cm)" onChange={(e) => setLength(e.target.value)}></input>
                                 </div>
                                 <br></br>
                                 <div className='add-description'>Please, provide dimensions (cm)</div>
@@ -136,10 +136,10 @@ const POSTdata = () => {
                     }
 
                     {
-                        attribute === 'Size' && (
+                        attribute === 'DVD' && (
                             <div className='row input-field'>
                                 <h3 className='col-3'>Value</h3>
-                                <input type="number" className='col-7' required placeholder="100 (mb)" value={attribute_value} onChange={(e) => setValue(e.target.value)}></input>
+                                <input id="size" type="number" className='col-7' required placeholder="100 (mb)" value={attribute_value} onChange={(e) => setValue(e.target.value)}></input>
                                 <div className='add-description'>Please, provide size (mb)</div>
                                 <br></br>
                             </div>

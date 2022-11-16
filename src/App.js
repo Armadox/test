@@ -4,21 +4,23 @@ import AddItem from './components/AddItem'    //COMPONENT TO ADD PRODUCTS
 import './components/style/style.css'
 import _TopBar from './components/TopBar'
 import _footer from './components/footer'
-import 'bootstrap/dist/css/bootstrap.css'
-import {Routes, Route} from 'react-router-dom'
+import 'bootstrap/dist/css/bootstrap.css';
+import { BrowserRouter as Router,Routes, Route,} from 'react-router-dom';
 /////////////////////////////////////////////////////////////////////////////////////
 
 
 function App() {
   return (
-    <div>
-      <_TopBar />
-      <Routes>
-        <Route path='/' element={<Data/>} />
-        <Route path='/addproduct' element={<AddItem/>} />
-      </Routes>
-      <_footer/>
-    </div>
+    <Router>
+        <_TopBar />
+        <Routes>
+          <Route path='/'>
+            <Route index element={<Data/>} />
+            <Route path='addproduct' element={<AddItem/>} />
+          </Route>
+        </Routes>
+        <_footer/>
+    </Router>
   );
 }
 

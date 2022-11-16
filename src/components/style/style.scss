@@ -205,17 +205,17 @@ body
         font-size: var(--box-text-size);
     }
 
-    &.Weight
+    &.Book
     {
         background-color: var(--weight-background-color);
     }
 
-    &.Dimension
+    &.Furniture
     {
         background-color: var(--dimension-background-color);
     }
 
-    &.Size
+    &.DVD
     {
         background-color: var(--size-background-color);
     }
@@ -272,7 +272,6 @@ div.row>select
     border: 0;
     border-radius: 50%;
     color: #fff;
-    font-size: 30px;
     font-weight: bolder;
     cursor: pointer;
     overflow: hidden;

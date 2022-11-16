@@ -192,13 +192,13 @@ body {
 .product-box > div {
   font-size: var(--box-text-size);
 }
-.product-box.Weight {
+.product-box.Book {
   background-color: var(--weight-background-color);
 }
-.product-box.Dimension {
+.product-box.Furniture {
   background-color: var(--dimension-background-color);
 }
-.product-box.Size {
+.product-box.DVD {
   background-color: var(--size-background-color);
 }
 
@@ -240,7 +240,6 @@ div.row > select {
   border: 0;
   border-radius: 50%;
   color: #fff;
-  font-size: 30px;
   font-weight: bolder;
   cursor: pointer;
   overflow: hidden;

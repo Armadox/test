@@ -31,9 +31,9 @@ $productLength = $data->length;
 $productWeight = $data->weight;
 
 //AVAILABLE ATTRIBUTES////
-$weighter = "Book";
-$dimension = "Furniture";
-$size = "DVD";
+$weighter = "Weight";
+$dimension = "Dimension";
+$size = "Size";
 //////////////////////////
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////

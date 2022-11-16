@@ -6,7 +6,7 @@ const Data = () => {
 
   //FETCHING API DATA
   useEffect(() => {
-    fetch(process.env.REACT_APP_FETCH_URL)
+    fetch("server.php")
     .then(res => res.json())
     .then((result) =>{setItem(result)})
     .catch((err)=>{console.log("")});},[]);
@@ -40,7 +40,7 @@ const Data = () => {
   const handleDelete = (e) => {
     var number = [...checked];
     var delForm = {number};
-    fetch(process.env.REACT_APP_FETCH_DELETE_URL, {
+    fetch("delete.php", {
     method: 'POST',
     body:JSON.stringify(delForm)
     })
@@ -62,7 +62,7 @@ const Data = () => {
       {item.map(Data => (
         <div key={Data.id} className={Data.attribute+" product-box col-xxl-2 col-xl-2 col-lg-3 col-md-4 col-sm-4 col-12"}>
           <div style={{width: '100%', height: '25px'}}>
-            <input type="checkbox" className="form-check-input checkbox" value={Data.id} defaultChecked={!!checked[Data.id]} onChange={(e) => {handleCheck(e);}}/>
+            <input type="checkbox" className="form-check-input checkbox delete-checkbox" value={Data.id} defaultChecked={!!checked[Data.id]} onChange={(e) => {handleCheck(e);}}/>
           </div>
           <div className='box-sku'>{Data.sku}</div>
           <div className='box-name'>{Data.name}</div>
